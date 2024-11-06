@@ -20,6 +20,5 @@ from django.urls import path
 from CV import views
 
 urlpatterns = [
-    path('create-profile/', views.create_profile, name='create_profile'),
 ]
 
