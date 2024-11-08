@@ -1,6 +1,6 @@
 # forms.py
 from django import forms
-from .models import CustomUser
+from .models import CustomUser, Profile, Education, Experience, Skill, Certification
 
 
 class RegisterForm(forms.ModelForm):
@@ -20,35 +20,68 @@ class RegisterForm(forms.ModelForm):
             raise forms.ValidationError("Las contraseñas no coinciden.")
         return cleaned_data
 
+
 class LoginForm(forms.Form):
     email = forms.EmailField(max_length=255, required=True, widget=forms.EmailInput(attrs={'placeholder': 'Email'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Contraseña'}))
 
-class ProfileForm(forms.Form):
-    # Sección de Datos Personales
-    full_name = forms.CharField(max_length=255, required=True, label="Nombre Completo")
-    address = forms.CharField(max_length=255, required=True, label="Dirección")
-    phone = forms.CharField(max_length=20, required=True, label="Teléfono")
-    nationality = forms.CharField(max_length=100, required=True, label="Nacionalidad")
-    profile_picture = forms.ImageField(required=False, label="Foto de Perfil")
 
-    # Sección de Educación
-    institution_name = forms.CharField(max_length=255, required=True, label="Nombre de la Institución")
-    degree = forms.CharField(max_length=255, required=True, label="Título Obtenido")
-    start_date_education = forms.DateField(required=True, label="Fecha de Inicio")
-    end_date_education = forms.DateField(required=True, label="Fecha de Finalización")
-    description_education = forms.CharField(widget=forms.Textarea, required=False, label="Descripción de estudios")
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['full_name', 'address', 'phone', 'nationality', 'profile_picture']
+        labels = {
+            'full_name': 'Nombre Completo',
+            'address': 'Dirección',
+            'phone': 'Teléfono',
+            'nationality': 'Nacionalidad',
+            'profile_picture': 'Foto de Perfil'
+        }
 
-    # Sección de Experiencia
-    company_name = forms.CharField(max_length=255, required=True, label="Nombre de la Empresa")
-    job_title = forms.CharField(max_length=255, required=True, label="Cargo")
-    start_date_experience = forms.DateField(required=True, label="Fecha de Inicio")
-    end_date_experience = forms.DateField(required=True, label="Fecha de Finalización")
-    description_experience = forms.CharField(widget=forms.Textarea, required=False, label="Descripción del trabajo")
 
-    # Sección de Habilidades
-    skill_name = forms.CharField(max_length=100, required=True, label="Habilidad")
-    level = forms.CharField(max_length=100, required=True, label="Nivel de habilidad")
+class EducationForm(forms.ModelForm):
+    class Meta:
+        model = Education
+        fields = ['institution_name', 'degree', 'start_date', 'end_date', 'description']
+        labels = {
+            'institution_name': 'Nombre de la Institución',
+            'degree': 'Título Obtenido',
+            'start_date': 'Fecha de Inicio',
+            'end_date': 'Fecha de Finalización',
+            'description': 'Descripción de estudios'
+        }
 
-    # Sección de Certificaciones
-    certification_file = forms.FileField(required=False, label="Certificaciones")
+
+class ExperienceForm(forms.ModelForm):
+    class Meta:
+        model = Experience
+        fields = ['company_name', 'job_title', 'start_date', 'end_date', 'description']
+        labels = {
+            'company_name': 'Nombre de la Empresa',
+            'job_title': 'Cargo',
+            'start_date': 'Fecha de Inicio',
+            'end_date': 'Fecha de Finalización',
+            'description': 'Descripción del trabajo'
+        }
+
+
+class SkillForm(forms.ModelForm):
+    class Meta:
+        model = Skill
+        fields = ['skill_name', 'level']
+        labels = {
+            'skill_name': 'Habilidad',
+            'level': 'Nivel de habilidad'
+        }
+
+
+class CertificationForm(forms.ModelForm):
+    class Meta:
+        model = Certification
+        fields = ['certification_name', 'organization', 'issue_date', 'expiration_date']
+        labels = {
+            'certification_name': 'Certificación',
+            'organization': 'Organización',
+            'issue_date': 'Fecha de Emisión',
+            'expiration_date': 'Fecha de Expiración'
+        }

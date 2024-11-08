@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Datos - Easy CV</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Mis Datos</h2>
+        
+        <!-- Datos del Perfil -->
+        <h4 class="section-title">Perfil</h4>
+        {% if profile.profile_picture %}
+            <img src="{{ profile.profile_picture.url }}" alt="Foto de perfil" class="profile-picture">
+        {% endif %}
+        <p><strong>Nombre Completo:</strong> {{ profile.full_name }}</p>
+        <p><strong>Correo Electrónico:</strong> {{ profile.user.email }}</p>
+        <p><strong>Nombre de Usuario:</strong> {{ profile.user.username }}</p>
+        <p><strong>Dirección:</strong> {{ profile.address }}</p>
+        <p><strong>Teléfono:</strong> {{ profile.phone }}</p>
+        <p><strong>Nacionalidad:</strong> {{ profile.nationality }}</p>
+
+        <!-- Datos de Educación -->
+        <h4 class="section-title">Educación</h4>
+        {% for education in profile.educations.all %}
+            <p><strong>Institución:</strong> {{ education.institution_name }}</p>
+            <p><strong>Título:</strong> {{ education.degree }}</p>
+            <p><strong>Fecha de Inicio:</strong> {{ education.start_date }}</p>
+            <p><strong>Fecha de Finalización:</strong> {{ education.end_date|default:"Actualmente" }}</p>
+            <p><strong>Descripción:</strong> {{ education.description }}</p>
+            <hr>
+        {% empty %}
+            <p>No se han añadido datos de educación.</p>
+        {% endfor %}
+
+        <!-- Experiencia Laboral -->
+        <h4 class="section-title">Experiencia Laboral</h4>
+        {% for experience in profile.experiences.all %}
+            <p><strong>Empresa:</strong> {{ experience.company_name }}</p>
+            <p><strong>Puesto:</strong> {{ experience.job_title }}</p>
+            <p><strong>Fecha de Inicio:</strong> {{ experience.start_date }}</p>
+            <p><strong>Fecha de Finalización:</strong> {{ experience.end_date|default:"Actualmente" }}</p>
+            <p><strong>Descripción:</strong> {{ experience.description }}</p>
+            <hr>
+        {% empty %}
+            <p>No se ha añadido experiencia laboral.</p>
+        {% endfor %}
+
+        <!-- Habilidades -->
+        <h4 class="section-title">Habilidades</h4>
+        {% for skill in profile.skills.all %}
+            <p><strong>Habilidad:</strong> {{ skill.skill_name }}</p>
+            <p><strong>Nivel:</strong> {{ skill.level }}</p>
+            <hr>
+        {% empty %}
+            <p>No se han añadido habilidades.</p>
+        {% endfor %}
+
+        <!-- Certificaciones -->
+        <h4 class="section-title">Certificaciones</h4>
+        {% for certification in profile.certifications.all %}
+            <p><strong>Certificación:</strong> {{ certification.certification_name }}</p>
+            <p><strong>Organización:</strong> {{ certification.organization }}</p>
+            <p><strong>Fecha de Emisión:</strong> {{ certification.issue_date }}</p>
+            <p><strong>Fecha de Expiración:</strong> {{ certification.expiration_date|default:"No Expira" }}</p>
+            <hr>
+        {% empty %}
+            <p>No se han añadido certificaciones.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
