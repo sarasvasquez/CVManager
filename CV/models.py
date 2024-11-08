@@ -28,9 +28,10 @@ class CustomUserManager(BaseUserManager):
 class User(AbstractBaseUser):
     email = models.EmailField(unique=True, max_length=255)
     username = models.CharField(max_length=50, unique=True)
-    is_active = models.BooleanField(default=True)  # Para activar/desactivar usuarios
-    is_admin = models.BooleanField(default=False)  # Para definir si un usuario es administrador
-    # Asignamos el UserManager personalizado
+    is_active = models.BooleanField(default=True)  
+    is_admin = models.BooleanField(default=False) 
+    is_staff = models.BooleanField(default=False)
+    
     objects = CustomUserManager()
 
     # Campo que se usa como identificador único para la autenticación
