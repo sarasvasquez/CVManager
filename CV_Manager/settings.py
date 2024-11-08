@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'CV',
 ]
 
+# Modelo de usuario personalizado
+AUTH_USER_MODEL = 'CV.User'
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

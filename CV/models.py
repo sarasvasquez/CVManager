@@ -14,13 +14,22 @@ class CustomUserManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self._db)
         return user
+    
+    def create_superuser(self, email, username, password=None):
+        user = self.create_user(email, username, password)
+        user.is_admin = True 
+        user.is_staff = True  
+        user.is_superuser = True  
+        user.save(using=self._db)
+        return user
+
 
 # Modelo de usuario personalizado
 class User(AbstractBaseUser):
     email = models.EmailField(unique=True, max_length=255)
     username = models.CharField(max_length=50, unique=True)
     is_active = models.BooleanField(default=True)  # Para activar/desactivar usuarios
-
+    is_admin = models.BooleanField(default=False)  # Para definir si un usuario es administrador
     # Asignamos el UserManager personalizado
     objects = CustomUserManager()
 
