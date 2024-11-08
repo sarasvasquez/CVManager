@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Completo</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+    <h2>Formulario de Ingreso</h2>
+    <form method="post" enctype="multipart/form-data">
+        <!--{% csrf_token %}-->
+
+        <!-- Sección de Datos Personales -->
+        <h4>Datos Personales</h4>
+        <div class="form-group">
+            <label for="id_full_name">Nombre Completo</label>
+            <input type="text" name="full_name" id="id_full_name" placeholder="Nombre completo">
+        </div>
+
+        <div class="form-group">
+            <label for="id_address">Dirección</label>
+            <input type="text" name="address" id="id_address" placeholder="Dirección">
+        </div>
+
+        <div class="form-group">
+            <label for="id_phone">Teléfono</label>
+            <input type="text" name="phone" id="id_phone" placeholder="Teléfono">
+        </div>
+
+        <div class="form-group">
+            <label for="id_nationality">Nacionalidad</label>
+            <input type="text" name="nationality" id="id_nationality" placeholder="Nacionalidad">
+        </div>
+
+        <div class="form-group">
+            <label for="id_profile_picture">Foto de Perfil</label>
+            <input type="file" name="profile_picture" id="id_profile_picture">
+        </div>
+
+        <!-- Sección de Educación -->
+        <h4>Educación</h4>
+        <div class="form-group">
+            <label for="id_institution_name">Nombre de la Institución</label>
+            <input type="text" name="institution_name" id="id_institution_name" placeholder="Institución educativa">
+        </div>
+
+        <div class="form-group">
+            <label for="id_degree">Título Obtenido</label>
+            <input type="text" name="degree" id="id_degree" placeholder="Título">
+        </div>
+
+        <div class="form-group">
+            <label for="id_start_date_education">Fecha de Inicio</label>
+            <input type="date" name="start_date_education" id="id_start_date_education">
+        </div>
+
+        <div class="form-group">
+            <label for="id_end_date_education">Fecha de Finalización</label>
+            <input type="date" name="end_date_education" id="id_end_date_education">
+        </div>
+
+        <div class="form-group">
+            <label for="id_description_education">Descripción</label>
+            <textarea name="description_education" id="id_description_education" rows="3" placeholder="Descripción de estudios"></textarea>
+        </div>
+
+        <!-- Sección de Experiencia -->
+        <h4>Experiencia</h4>
+        <div class="form-group">
+            <label for="id_company_name">Nombre de la Empresa</label>
+            <input type="text" name="company_name" id="id_company_name" placeholder="Empresa">
+        </div>
+
+        <div class="form-group">
+            <label for="id_job_title">Cargo</label>
+            <input type="text" name="job_title" id="id_job_title" placeholder="Cargo">
+        </div>
+
+        <div class="form-group">
+            <label for="id_start_date_experience">Fecha de Inicio</label>
+            <input type="date" name="start_date_experience" id="id_start_date_experience">
+        </div>
+
+        <div class="form-group">
+            <label for="id_end_date_experience">Fecha de Finalización</label>
+            <input type="date" name="end_date_experience" id="id_end_date_experience">
+        </div>
+
+        <div class="form-group">
+            <label for="id_description_experience">Descripción</label>
+            <textarea name="description_experience" id="id_description_experience" rows="3" placeholder="Descripción del trabajo"></textarea>
+        </div>
+
+        <!-- Sección de Habilidades -->
+        <h4>Habilidades</h4>
+        <div class="form-group">
+            <label for="id_skill_name">Habilidad</label>
+            <input type="text" name="skill_name" id="id_skill_name" placeholder="Habilidad">
+        </div>
+
+        <div class="form-group">
+            <label for="id_level">Nivel</label>
+            <input type="text" name="level" id="id_level" placeholder="Nivel de habilidad">
+        </div>
+
+        <!-- Sección de Certificaciones -->
+        <h4>Certificaciones</h4>
+        <div class="form-group">
+            <label for="id_certification_file">Certificaciones</label>
+            <input type="file" name="certification_file" id="id_certification_file">
+        </div>
+
+        <!-- Botón de Guardar -->
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

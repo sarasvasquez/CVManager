@@ -1,7 +1,7 @@
 # views.py
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, ProfileForm
 from django.contrib.auth import authenticate, login
 from .models import *
 
@@ -40,4 +40,14 @@ def login_view(request):
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
-
+def profile(request):
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            messages.success(request, "El formulario se ha guardado correctamente.")
+            return redirect('home')
+        else:
+            messages.error(request, "Corrige los errores en el formulario.")
+    else:
+        form = ProfileForm()
+    return render(request, 'profile.html', {'form': form})
