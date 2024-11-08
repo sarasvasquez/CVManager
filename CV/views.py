@@ -18,7 +18,7 @@ def register(request):
             user.set_password(form.cleaned_data['password'])  # Usamos la contraseña creada por el usuario
             user.save()
             login(request, user)  # Inicia sesión después del registro
-            return redirect('home')
+            return redirect('profile')
     else:
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
@@ -34,7 +34,7 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, f'Bienvenido, {user.username}!')
-                return redirect('home')  # Redirige a la página de inicio o a otra página de tu elección
+                return redirect('view_profile')  # Redirige a la página de inicio o a otra página de tu elección
             else:
                 messages.error(request, 'Credenciales inválidas, inténtalo nuevamente.')
     else:
