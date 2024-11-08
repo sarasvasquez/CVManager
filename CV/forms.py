@@ -1,6 +1,6 @@
 # forms.py
 from django import forms
-from .models import User
+from .models import CustomUser
 
 
 class RegisterForm(forms.ModelForm):
@@ -8,7 +8,7 @@ class RegisterForm(forms.ModelForm):
     confirm_password = forms.CharField(widget=forms.PasswordInput, label="Confirmar Contraseña")
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = ['email', 'username']
 
     def clean(self):

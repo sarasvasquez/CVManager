@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import RegisterForm, LoginForm
 from django.contrib.auth import authenticate, login
+from .models import *
 
 
 def home(request):

@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 # Manager personalizado sin soporte para superusuarios
 class CustomUserManager(BaseUserManager):
@@ -25,7 +25,7 @@ class CustomUserManager(BaseUserManager):
 
 
 # Modelo de usuario personalizado
-class User(AbstractBaseUser):
+class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True, max_length=255)
     username = models.CharField(max_length=50, unique=True)
     is_active = models.BooleanField(default=True)  
@@ -43,7 +43,7 @@ class User(AbstractBaseUser):
 
 # Modelo para el perfil del usuario
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name="profile")
     full_name = models.CharField(max_length=100)
     address = models.CharField(max_length=255, blank=True, default='')
     phone = models.CharField(max_length=20, blank=True, default='')

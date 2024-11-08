@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 ]
 
 # Modelo de usuario personalizado
-AUTH_USER_MODEL = 'CV.User'
+AUTH_USER_MODEL = 'CV.CustomUser'
 
 
 MIDDLEWARE = [
