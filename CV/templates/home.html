@@ -5,9 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <h1>Bienvenido a la aplicación CV Manager</h1>
-    <p>Para registrarte, haz clic en <a href="{% url 'register' %}">Registro</a>.</p>
+    <div class="container">
+        <!-- Lado izquierdo -->
+        <div class="left-side">
+            <h1>Bienvenido a CV Manager</h1>
+            <p class="description">
+                Somos una plataforma creada para facilitar la gestión de tus hojas de vida de manera profesional y organizada. Aquí podrás almacenar, actualizar y compartir tu CV de forma sencilla. Nuestro objetivo es ayudarte a presentar tus habilidades y experiencia laboral de la mejor manera posible, conectándote con oportunidades laborales relevantes y dándote las herramientas para destacar en el mercado laboral.Además, con nuestra extensión, el proceso de rellenar hojas de vida será descomplicado y rápido
+            </p>
+        </div>
+
+        <!-- Lado derecho -->
+        <div class="right-side">
+            <img src="{% static 'img/easy-cv128.png' %}" alt="Logo CV Manager" class="logo">
+            <h2>¿Quieres registrarte?</h2>
+            <a href="{% url 'register' %}" class="action-button">Regístrate</a>
+            <p>¿Ya tienes cuenta?</p>
+            <a href="{% url 'login' %}" class="action-button secondary">Iniciar sesión</a>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,98 @@
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* styles.css */
+
+/* styles.css */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Montserrat";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    height: 80vh;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.left-side {
+    background-color: #0288d1; /* Azul claro */
+    color: #ffffff;
+    padding: 3rem;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.left-side h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.left-side .description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.right-side {
+    background-color: #ffffff;
+    padding: 3rem;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.logo {
+    width: 300px; /* Ajusta el tamaño según sea necesario */
+    margin-bottom: 0rem;
+}
+
+.right-side h2 {
+    font-size: 2.5rem;
+    color: #333333;
+    margin-bottom: 1rem;
+}
+
+
+.action-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #0288d1;
+    color: #ffffff;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
+.action-button.secondary {
+    background-color: #0288d1; /* Gris oscuro para botón de inicio de sesión */
+}
+
+.action-button:hover {
+    background-color: #2cc3d4; /* Azul oscuro para hover */
+}
+
+.action-button.secondary:hover {
+    background-color: #2cc3d4;
+}
+
+.right-side p {
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+    color: #333333;
+}
